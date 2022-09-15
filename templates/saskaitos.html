@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if visos_saskaitos %}
+{% for saskaita in visos_saskaitos %}
+<hr>
+<p>{{saskaita.numeris}}&nbsp &nbsp{{saskaita.balansas}}&nbsp &nbsp{{saskaita.bankas}}</p>
+{% if saskaita.asmuo %}
+<p>Asmuo:</p>
+<p>{{saskaita.asmuo.vardas}} {{saskaita.asmuo.pavarde}}</p>
+{% endif %}
+<a href="{{ url_for('delete', id=saskaita['id']) }}">Ištrinti</a>
+<a href="{{ url_for('update', id=saskaita['id']) }}">Redaguoti</a>
+{% endfor %}
+{% endif %}
+<hr>
+<p><a href="{{ url_for('new_account')}}">Nauja saskaita</a></p>
+
+{% endblock %}
