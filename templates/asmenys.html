@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if visi_asmenys %}
+{% for asmuo in visi_asmenys %}
+<hr>
+<p>{{asmuo.vardas}}</p>
+<p>{{asmuo.pavarde}}</p>
+{% if asmuo.saskaitos %}
+<p>Sąskaitos:</p>
+{% for saskaita in asmuo.saskaitos %}
+<p>Sąskaitos numeris {{saskaita.numeris}} </p>
+{% endfor %}
+{% endif %}
+
+{% endfor %}
+{% endif %}
+<hr>
+<p><a href="{{ url_for('new_person')}}">Naujas asmuo</a></p>
+
+{% endblock %}
